@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Package') {
+            steps {
+                sh 'mkdir -p build'
+                sh 'npm install' // Or whatever command you need to install dependencies
+                sh 'npm run build' // Or whatever command you need to build the package
+                sh 'cp -R dist/* build/' // Or whatever command you need to copy the built package to the build directory
+            }
+        }
+    }
+}
